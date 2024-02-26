@@ -11,7 +11,9 @@ class AppTheme {
     fontFamily: AppConstants.kAppFontFamily,
     primaryColor: AppColors.kPrimaryColor,
     primarySwatch: AppColors.kPrimarySwatch,
+    scaffoldBackgroundColor: AppColors.kWhite,
     appBarTheme: const AppBarTheme(
+      backgroundColor: AppColors.kWhite,
       iconTheme: IconThemeData(color: AppColors.kTextColor),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(

@@ -25,12 +25,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      // leading: leading ??
-      //     IconButton(
-      //       onPressed: onPressed ?? () => context.pop(),
-      //       icon: const Icon(Icons.arrow_back_ios_rounded),
-      //       color: leadingIconColor,
-      //     ),
       title: Text(
         title,
         style: AppTextStyles.kStyleParadiseFont.copyWith(

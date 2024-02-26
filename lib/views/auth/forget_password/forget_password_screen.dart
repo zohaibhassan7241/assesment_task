@@ -21,44 +21,47 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
-        width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const AuthHeader(
-              icon: AppAssets.iconForget,
-              title: 'Forgot Password',
-            ),
-            const Gap(50),
-            Text(
-              'Email Address Here',
-              style: AppTextStyles.kHeadingLarge.copyWith(
-                fontWeight: FontWeight.w800,
+      body: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          width: double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const AuthHeader(
+                icon: AppAssets.iconForget,
+                title: 'Forgot Password',
               ),
-            ),
-            const Gap(5),
-            Text(
-              'Enter the email address associated'
-              'with your account.',
-              textAlign: TextAlign.center,
-              style: AppTextStyles.kBodySmall
-                  .copyWith(color: AppColors.kTextLightGreyColor, fontSize: 14),
-            ),
-            const Gap(30),
-            const CustomTextField(
-              labelText: 'Email address',
-            ),
-            const Gap(40),
-            CustomButton(
-              onPressed: () {
-                context.push(Routes.otpPage);
-              },
-              text: 'Recover Password',
-              width: double.infinity,
-            ),
-          ],
+              const Gap(50),
+              Text(
+                'Email Address Here',
+                style: AppTextStyles.kHeadingLarge.copyWith(
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              const Gap(5),
+              Text(
+                'Enter the email address associated'
+                'with your account.',
+                textAlign: TextAlign.center,
+                style: AppTextStyles.kBodySmall.copyWith(
+                    color: AppColors.kTextLightGreyColor, fontSize: 14),
+              ),
+              const Gap(30),
+              const CustomTextField(
+                labelText: 'Email address',
+              ),
+              const Gap(40),
+              CustomButton(
+                onPressed: () {
+                  context.push(Routes.otpPage);
+                },
+                text: 'Recover Password',
+                width: double.infinity,
+              ),
+            ],
+          ),
         ),
       ),
     );

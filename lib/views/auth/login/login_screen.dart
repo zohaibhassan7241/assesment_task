@@ -47,74 +47,77 @@ class _LoginScreenState extends State<LoginScreen> {
     return UnfocusKeyboard(
       child: Scaffold(
         appBar: AppBar(),
-        body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          width: double.infinity,
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const AuthHeader(
-                  icon: AppAssets.iconPerson,
-                  title: 'LOGIN',
-                ),
-                const Gap(20),
-                CustomTextField(
-                  labelText: 'Email/Username',
-                  textEditingController: _userNameController,
-                  validator: AppValidator.isAlphabetic,
-                ),
-                const Gap(20),
-                CustomTextField(
-                  labelText: 'Password',
-                  textEditingController: _passwordController,
-                  validator: AppValidator.passwordValidator,
-                  suffix: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _obscurePassword = !_obscurePassword;
-                      });
-                    },
-                    icon: Icon(
-                      _obscurePassword
-                          ? Icons.visibility_off
-                          : Icons.visibility,
-                    ),
-                    color: AppColors.kTextGreyColor,
-                    iconSize: 25.0,
+        body: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            width: double.infinity,
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const AuthHeader(
+                    icon: AppAssets.iconPerson,
+                    title: 'LOGIN',
                   ),
-                ),
-                const Gap(5),
-                const RememberMe(),
-                const Gap(40),
-                CustomButton(
-                  onPressed: () => onLoginButtonClicked(context),
-                  text: 'Login',
-                  width: double.infinity,
-                ),
-                const Gap(5),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: InkWell(
-                    onTap: () {
-                      context.push(Routes.forgetPage);
-                    },
-                    child: Text(
-                      "Forgot password?",
-                      style: AppTextStyles.kBodyMedium.copyWith(
-                        color: AppColors.kTextLightGreyColor,
+                  const Gap(20),
+                  CustomTextField(
+                    labelText: 'Email/Username',
+                    textEditingController: _userNameController,
+                    validator: AppValidator.isAlphabetic,
+                  ),
+                  const Gap(20),
+                  CustomTextField(
+                    labelText: 'Password',
+                    textEditingController: _passwordController,
+                    validator: AppValidator.passwordValidator,
+                    suffix: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
+                      icon: Icon(
+                        _obscurePassword
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                      ),
+                      color: AppColors.kTextGreyColor,
+                      iconSize: 25.0,
+                    ),
+                  ),
+                  const Gap(5),
+                  const RememberMe(),
+                  const Gap(40),
+                  CustomButton(
+                    onPressed: () => onLoginButtonClicked(context),
+                    text: 'Login',
+                    width: double.infinity,
+                  ),
+                  const Gap(5),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: InkWell(
+                      onTap: () {
+                        context.push(Routes.forgetPage);
+                      },
+                      child: Text(
+                        "Forgot password?",
+                        style: AppTextStyles.kBodyMedium.copyWith(
+                          color: AppColors.kTextLightGreyColor,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const Gap(30),
-                const LoginSignupDivider(
-                  title: "OR",
-                ),
-                const Gap(30),
-                const SocialAuthRow(),
-              ],
+                  const Gap(30),
+                  const LoginSignupDivider(
+                    title: "OR",
+                  ),
+                  const Gap(30),
+                  const SocialAuthRow(),
+                ],
+              ),
             ),
           ),
         ),

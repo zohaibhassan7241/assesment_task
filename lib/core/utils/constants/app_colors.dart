@@ -10,7 +10,7 @@ class AppColors {
   static const Color kPrimaryColorDark = Color(_primaryColorDarkHexCode);
 
   static const Color kBlack = Colors.black;
-  static const Color kWhite = Colors.white;
+  static const Color kWhite = Color(0XFFFFFFFF);
   static const Color kTextColor = Color(0XFF333333);
   static const Color kTextPinkColor = Color(0XFFDA33CF);
   static const Color klightPurpleColor = Color(0XFFEDBEE8);

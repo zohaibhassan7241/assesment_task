@@ -54,98 +54,101 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return UnfocusKeyboard(
       child: Scaffold(
         appBar: AppBar(),
-        body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          width: double.infinity,
-          child: Form(
-            key: _formKeySignup,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const AuthHeader(
-                  icon: AppAssets.iconPerson,
-                  title: 'SIGNUP',
-                ),
-                const Gap(20),
-                CustomTextField(
-                  labelText: 'Username',
-                  textEditingController: _userNameController,
-                  validator: AppValidator.isAlphabetic,
-                ),
-                const Gap(20),
-                CustomTextField(
-                  labelText: 'Email address',
-                  textEditingController: _emailController,
-                  validator: AppValidator.isEmptyValidator,
-                ),
-                const Gap(20),
-                CustomTextField(
-                  labelText: 'Password',
-                  textEditingController: _passwordController,
-                  obscureText: _obscurePassword,
-                  validator: AppValidator.passwordValidator,
-                  errorTextStyle:
-                      const TextStyle(fontSize: 0, color: Colors.transparent),
-                  onChange: (value) {
-                    setState(() {
-                      passwordFieldInteracted =
-                          true; // Set to true when the user interacts with the password field
-                    });
-                    return null;
-                  },
-                  suffix: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _obscurePassword = !_obscurePassword;
-                      });
-                    },
-                    icon: Icon(
-                      _obscurePassword
-                          ? Icons.visibility_off
-                          : Icons.visibility,
-                    ),
-                    color: AppColors.kTextGreyColor,
-                    iconSize: 25.0,
+        body: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            width: double.infinity,
+            child: Form(
+              key: _formKeySignup,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const AuthHeader(
+                    icon: AppAssets.iconPerson,
+                    title: 'SIGNUP',
                   ),
-                ),
-                if (passwordFieldInteracted &&
-                    _isPasswordValid(_passwordController.text) != null)
-                  passwordError(),
-                const Gap(20),
-                CustomTextField(
-                  labelText: 'Confirm Password',
-                  textEditingController: _confirmPasswordController,
-                  obscureText: _obscureConfirmPassword,
-                  validator: (String? value) {
-                    return AppValidator.passwordMatchValidator(
-                      _passwordController.text,
-                      value,
-                    );
-                  },
-                  suffix: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _obscureConfirmPassword = !_obscureConfirmPassword;
-                      });
-                    },
-                    icon: Icon(
-                      _obscureConfirmPassword
-                          ? Icons.visibility_off
-                          : Icons.visibility,
-                    ),
-                    color: AppColors.kTextGreyColor,
-                    iconSize: 25.0,
+                  const Gap(20),
+                  CustomTextField(
+                    labelText: 'Username',
+                    textEditingController: _userNameController,
+                    validator: AppValidator.isAlphabetic,
                   ),
-                ),
-                const Gap(40),
-                CustomButton(
-                  onPressed: () {
-                    onSignUpButtonClicked();
-                  },
-                  text: 'Signup',
-                  width: double.infinity,
-                ),
-              ],
+                  const Gap(20),
+                  CustomTextField(
+                    labelText: 'Email address',
+                    textEditingController: _emailController,
+                    validator: AppValidator.isEmptyValidator,
+                  ),
+                  const Gap(20),
+                  CustomTextField(
+                    labelText: 'Password',
+                    textEditingController: _passwordController,
+                    obscureText: _obscurePassword,
+                    validator: AppValidator.passwordValidator,
+                    errorTextStyle:
+                        const TextStyle(fontSize: 0, color: Colors.transparent),
+                    onChange: (value) {
+                      setState(() {
+                        passwordFieldInteracted =
+                            true; // Set to true when the user interacts with the password field
+                      });
+                      return null;
+                    },
+                    suffix: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
+                      icon: Icon(
+                        _obscurePassword
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                      ),
+                      color: AppColors.kTextGreyColor,
+                      iconSize: 25.0,
+                    ),
+                  ),
+                  if (passwordFieldInteracted &&
+                      _isPasswordValid(_passwordController.text) != null)
+                    passwordError(),
+                  const Gap(20),
+                  CustomTextField(
+                    labelText: 'Confirm Password',
+                    textEditingController: _confirmPasswordController,
+                    obscureText: _obscureConfirmPassword,
+                    validator: (String? value) {
+                      return AppValidator.passwordMatchValidator(
+                        _passwordController.text,
+                        value,
+                      );
+                    },
+                    suffix: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _obscureConfirmPassword = !_obscureConfirmPassword;
+                        });
+                      },
+                      icon: Icon(
+                        _obscureConfirmPassword
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                      ),
+                      color: AppColors.kTextGreyColor,
+                      iconSize: 25.0,
+                    ),
+                  ),
+                  const Gap(40),
+                  CustomButton(
+                    onPressed: () {
+                      onSignUpButtonClicked();
+                    },
+                    text: 'Signup',
+                    width: double.infinity,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
