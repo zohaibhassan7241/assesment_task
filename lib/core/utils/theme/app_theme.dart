@@ -14,6 +14,7 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.kWhite,
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.kWhite,
+      surfaceTintColor: Colors.transparent,
       iconTheme: IconThemeData(color: AppColors.kTextColor),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
