@@ -1,0 +1,6 @@
+{
+    "fas.fileName.string": "app_assets",
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "always"
+     },
+}
